@@ -6,7 +6,6 @@ from django.db.models import Q
 
 
 
-
 def loginPage(request):
     context ={}
     return render(request, 'base/login_register.html',context)
