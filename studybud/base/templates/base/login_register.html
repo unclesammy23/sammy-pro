@@ -1,6 +1,8 @@
-{% extends 'main.html'%}
+{% extends 'main.html' %}
 
-{% block contnet %}
+<h1>hello</h1>
+
+{% block content %}
 
 
 <div>
@@ -8,10 +10,10 @@
         {% csrf_token %}
 
         <label>username: </label>
-        <input type="text" value="username" paceholder="Enter username">
+        <input type="text" name="username" paceholder="Enter username">
 
         <label>Password: </label>
-        <input type="password" value="password" paceholder="Enter password">
+        <input type="password" name="password" paceholder="Enter password">
 
 
 
