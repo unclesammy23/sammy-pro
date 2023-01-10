@@ -6,6 +6,9 @@
     <input type="text" name="q" placeholder='search Rooms..' />
 
 </form>
+{% if request.user.is_authenticated %}
+<a href="">Logout</a>
+{% else %}
 
 <a href="{% url 'login' %}">Login</a>
 
