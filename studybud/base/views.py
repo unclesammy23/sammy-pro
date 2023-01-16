@@ -31,6 +31,8 @@ def loginPage(request):
     context ={}
     return render(request, 'base/login_register.html',context)
 
+#just commit something
+
 
 def home(request):
 
