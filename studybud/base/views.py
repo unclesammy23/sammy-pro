@@ -35,6 +35,9 @@ def loginPage(request):
 
 #just commit something
 
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
 
