@@ -1,5 +1,32 @@
-{% load static %}
+{% extends 'store/main.html' %}
+{% load static %}  
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+{% block content %}  
+   </body>
+    <div class="big-picture-container">
+        <p>"Adorn Yourself with African Elegance."</p>
+        <img id="big" src= "{% static 'images/africa4.png' %}" alt="Big Picture">
+    </div>
+    </html>
 
-<h1>store</h1>
+    <div class="container">
+        
+
+    <div class="container mt-5">
+      <div class="row">
+        <!-- Product Card -->
+        {% for product in products %}
+        <div class="col-4">
+          <div class="card product-card shadow mb-4">
+            <img class="card-img-top product-card-image" src="{{product.image.url}}" alt="product image">
+            <div class="card-body">
+              <h5 class="card-title product-card-title">{{product.name}}</h5>
+              <p class="card-text product-card-description">{{product.price}} Zl</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-warning add-to-cart-button">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+{% endblock content %}   

@@ -1,2 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    
+    <title>The African Bazaar</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'store' %}">The African Bazaar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
 
-<h1>main</h1>
+            <div class="form-inline my-2 my-lg-0 ml-auto">
+                <a href="#" class="btn btn-warning">Login</a>
+                <div class="cart-container">
+                    <a href="{% url 'cart' %}">
+                        <img id="cart-icon" src="{% static 'images/cart.png' %}">
+                    </a>
+                    <span class="cart-count">0</span>
+                </div>   
+             </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+
+  {% block content %}
+  
+  {% endblock content %}
+
+
+
+
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>  

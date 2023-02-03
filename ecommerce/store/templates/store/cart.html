@@ -1,1 +1,72 @@
-<h1>cart</h1>
+{% extends 'store/main.html' %}
+{% load static %}  
+
+ {% block content %}  
+ <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <div class="card mt-5">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Shopping Chart</h3>
+            <a href="#" class="btn btn-secondary">Continue Shopping</a>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="product-list">
+              <!-- Add product rows dynamically -->
+            </tbody>
+          </table>
+          <div class="card-footer d-flex justify-content-between">
+            <a href="#" class="btn btn-danger">Clear Chart</a>
+            <button class="btn btn-primary">Update Chart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card mt-5">
+          <div class="card-header">
+            Order Summary
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <span>Subtotal</span>
+                <span id="subtotal"></span>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <span>Shipping</span>
+                <span id="shipping"></span>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="d-flex justify-content-between">
+                <span>Tax</span>
+                <span id="tax"></span>
+              </div>
+            </li>
+          </ul>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between">
+              <span class="font-weight-bold">Total</span>
+              <span id="total" class="font-weight-bold"></span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block mt-3">Check Out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+ {% endblock content %}   
