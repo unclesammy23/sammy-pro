@@ -2,71 +2,71 @@
 {% load static %}  
 
  {% block content %}  
+
  <div class="container">
     <div class="row">
-      <div class="col-8">
-        <div class="card mt-5">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="mb-0">Shopping Chart</h3>
-            <a href="#" class="btn btn-secondary">Continue Shopping</a>
-          </div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Product Name</th>
-                <th scope="col">Image</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Subtotal</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody id="product-list">
-              <!-- Add product rows dynamically -->
-            </tbody>
-          </table>
-          <div class="card-footer d-flex justify-content-between">
-            <a href="#" class="btn btn-danger">Clear Chart</a>
-            <button class="btn btn-primary">Update Chart</button>
+      <div class="col-md-8">
+        <div class="card mb-3">
+          <div class="card-header">Shopping Cart</div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in items %}
+                <tr>
+                  <td><img src="{{item.product.image.url}}" alt="product image"></td>
+                  <td>{{item.product.name}}</td>
+                  <td>{{item.product.price}}zl</td>
+                  <td>
+                    <input type="number" value="{{item.quantity}}" class="form-control">
+                  </td>
+                  <td>{{item.get_total}}</td>
+                  <td>
+                    <button class="btn btn-danger btn-sm">Remove</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="card mt-5">
-          <div class="card-header">
-            Order Summary
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="d-flex justify-content-between">
-                <span>Subtotal</span>
-                <span id="subtotal"></span>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <div class="d-flex justify-content-between">
-                <span>Shipping</span>
-                <span id="shipping"></span>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <div class="d-flex justify-content-between">
-                <span>Tax</span>
-                <span id="tax"></span>
-              </div>
-            </li>
-          </ul>
-          <div class="card-footer">
-            <div class="d-flex justify-content-between">
-              <span class="font-weight-bold">Total</span>
-              <span id="total" class="font-weight-bold"></span>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Order Total</div>
+          <div class="card-body">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="total">Subtotal: <span>{{order.get_cart_total}}zl</span></td>
+                </tr>
+                <tr>
+                  <td class="total">Shipping: <span>Free</span></td>
+                </tr>
+                <tr>
+                  <td class="total">Total: <span>{{order.get_cart_total}}zl</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="card-footer">
+              <button class="btn btn-primary btn-block">Checkout</button>
             </div>
           </div>
-          <button class="btn btn-primary btn-lg btn-block mt-3">Check Out</button>
         </div>
       </div>
     </div>
   </div>
+  
+
   
 
  {% endblock content %}   

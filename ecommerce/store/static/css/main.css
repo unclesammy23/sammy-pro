@@ -190,6 +190,7 @@ body {
   }
   
   .container {
+    margin-top: 70px;
     padding: 50px;
   }
   
@@ -198,6 +199,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 50px;
+    width: 300px;
   }
   
   .card-header {
