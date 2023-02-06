@@ -199,7 +199,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 50px;
-    width: 300px;
+    width: fit-content;
   }
   
   .card-header {

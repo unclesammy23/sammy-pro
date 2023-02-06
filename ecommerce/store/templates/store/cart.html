@@ -6,7 +6,7 @@
  <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <div class="card mb-3">
+        <div style="width:fit-content;" class="card mb-3">
           <div class="card-header">Shopping Cart</div>
           <div class="card-body">
             <table class="table table-striped">
@@ -27,11 +27,22 @@
                   <td>{{item.product.name}}</td>
                   <td>{{item.product.price}}zl</td>
                   <td>
-                    <input type="number" value="{{item.quantity}}" class="form-control">
+                    <form action="{% url 'update_cart' item.id %}" method="post">
+                      {% csrf_token %}
+                      <input type="number" value="{{item.quantity}}" class="form-control" name="quantity">
+                      <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    </form>
+                    
                   </td>
-                  <td>{{item.get_total}}</td>
+                  <td>{{item.get_total|floatformat:2}}</td>
                   <td>
-                    <button class="btn btn-danger btn-sm">Remove</button>
+                    <form action="{% url 'remove_from_cart' item.id %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" value="remove from cart">
+                      <button class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                    
+                    
                   </td>
                 </tr>
                 {% endfor %}
@@ -41,24 +52,27 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
+        <div  class="card">
           <div class="card-header">Order Total</div>
           <div class="card-body">
             <table class="table">
               <tbody>
                 <tr>
-                  <td class="total">Subtotal: <span>{{order.get_cart_total}}zl</span></td>
+                  <td class="total">Subtotal: <span>{{order.get_cart_total|floatformat:2}}zl</span></td>
                 </tr>
                 <tr>
                   <td class="total">Shipping: <span>Free</span></td>
                 </tr>
                 <tr>
-                  <td class="total">Total: <span>{{order.get_cart_total}}zl</span></td>
+                  <td class="total">Total: <span>{{order.get_cart_total|floatformat:2}}zl</span></td>
                 </tr>
               </tbody>
             </table>
             <div class="card-footer">
-              <button class="btn btn-primary btn-block">Checkout</button>
+              <a href="{% url 'checkout' %}">
+                <button class="btn btn-primary btn-block">Checkout</button>
+              </a>
+              
             </div>
           </div>
         </div>

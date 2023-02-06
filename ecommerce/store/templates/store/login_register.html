@@ -1,0 +1,93 @@
+{% extends 'store/main.html' %}
+{% load static %}  
+
+ {% block content %}
+ <style>
+    .container {
+      max-width: fit-content;
+    }
+    h2 {
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+    form {
+      background-color: #f7f7f7;
+      padding: 40px;
+      border-radius: 10px;
+    }
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .form-control {
+      border-radius: 10px;
+      border: none;
+      box-shadow: none;
+      padding: 10px 14px;
+      font-size: 18px;
+    }
+    .btn-block {
+      margin-top: 40px;
+      border-radius: 10px;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .mt-3 {
+      margin-top: 30px;
+    }
+    a {
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .row {
+        width: 600px;
+    }
+
+
+  </style>
+  
+ 
+ <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        {% if messages %}
+        <ul class="alert alert-info">
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% if page == 'login' %}
+        <h2 class="text-center">Login</h2>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="text-center mt-3">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+        {% else %}
+        <h2 class="text-center">Sign up</h2>
+        <form method="post" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+        </form>
+        <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+ 
+
+ {% endblock content %}   
