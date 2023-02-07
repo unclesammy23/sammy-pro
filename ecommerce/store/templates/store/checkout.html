@@ -8,7 +8,7 @@
       <div class="col-md-8">
         <div class="checkout-form">
           <h2>Customer Details</h2>
-          <form>
+          <form >
             <div class="form-group">
               <label for="fullname">Full Name</label>
               <input type="text" class="form-control" id="fullname" placeholder="Enter your full name">
@@ -30,7 +30,7 @@
               <input type="text" class="form-control" id="state" name="state" required>
             </div>
             <div class="form-group">
-              <label for="zip">Zip Code</label>
+              <label for="zip">Post Code</label>
               <input type="text" class="form-control" id="zip" name="zip" required>
             </div>
             <div class="form-group">
@@ -43,6 +43,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Place Order</button>
           </form>
+          
         </div>
       </div>
       <!-- Order Summary -->
@@ -58,6 +59,14 @@
              
              <hr>
              <p>Total: {{order.get_cart_total}} zl </p>
+             <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="your-sandbox-business-email">
+              <input type="hidden" name="item_name" value="{{ order.id }}">
+              <input type="hidden" name="amount" value="{{ order.get_cart_total }}">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="submit" value="Pay with PayPal" class="btn btn-primary">
+            </form>
           </div>
         </div>
     </div>

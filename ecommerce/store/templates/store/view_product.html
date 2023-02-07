@@ -1,0 +1,62 @@
+{% extends 'store/main.html' %}
+
+{% block content %}
+  <style>
+    .product-details {
+      background-color: #f7f7f7;
+      padding: 50px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-name {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    .product-description {
+      font-size: 18px;
+      color: #555;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .add-to-cart-button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .add-to-cart-button:hover {
+      background-color: #fff;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+  </style>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{product.image.url}}" alt="Product Image" class="product-image">
+      </div>
+      <div class="col-md-6 product-details">
+        <h1 class="product-name">{{product.name}}</h1>
+        <p class="product-description">{{product.description}}</p>
+        <a href="{% url 'add_to_cart' product.id %}"  data-action="add" class="btn btn-dark add-to-cart-button update-cart">Add to Cart</a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

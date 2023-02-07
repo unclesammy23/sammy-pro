@@ -4,32 +4,37 @@
 {% block content %}  
    </body>
    
-   
-    <div class="big-picture-container">
-        <p>"Adorn Yourself with African Elegance."</p>
-        <img id="big" src= "{% static 'images/africa4.png' %}" alt="Big Picture">
-    </div>
-    </html>
+   <div class="big-picture-container">
+    <p>"Adorn Yourself with African Elegance."</p>
+    <img id="big" src= "{% static 'images/africa4.png' %}" alt="Big Picture">
+</div>
+</html>
 
 
-    <div class="container">
-        
+<div class="container">
+    
 
-    <div class="container mt-5">
-      <div class="row">
-        <!-- Product Card -->
-        {% for product in products %}
-        <div class="col-4">
-          <div class="card product-card shadow mb-4">
-            <img class="card-img-top product-card-image" src="{{product.image.url}}" alt="product image">
-            <div class="card-body">
-              <h5 class="card-title product-card-title">{{product.name}}</h5>
-              <p class="card-text product-card-description">{{product.price}} Zl</p>
-            </div>
-            <div class="card-footer">
-              <a href="{% url 'add_to_cart' product.id %}"  data-action="add" class="btn btn-warning add-to-cart-button update-cart">Add to Cart</a>
-            </div>
+<div class="container mt-5">
+  <div class="row">
+    <!-- Product Card -->
+    {% for product in products %}
+    <div class="col-4">
+      <div class="card product-card shadow mb-4">
+        <img class="card-img-top product-card-image" src="{{product.image.url}}" alt="product image">
+        <div class="card-body">
+          <h5 class="card-title product-card-title">{{product.name}}</h5>
+          <p class="card-text product-card-description">{{product.price}} Zl</p>
+        </div>
+        <div class="card-footer">
+          <div class="action-container" style="width: 100%;">
+            <a href="{% url 'add_to_cart' product.id %}"  data-action="add" class="btn btn-dark add-to-cart-button update-cart">Add to Cart</a>
+            <br>
+            <br>
+            <a href="{% url 'view_product' product.id %}" class="btn btn-info view-product-button">View Product</a>
           </div>
         </div>
-        {% endfor %}
-{% endblock content %}   
+      </div>
+    </div>
+    {% endfor %}
+  {% endblock content %}
+   
